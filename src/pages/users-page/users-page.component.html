@@ -1,12 +1,7 @@
-<div class="">header</div>
 <main class="card__page">
   <div class="cards__container">
-    <app-user-card/>
-    <app-user-card/>
-    <app-user-card/>
-    <app-user-card/>
-    <app-user-card/>
-    <app-user-card/>
-    <app-user-card/>
+    <div *ngFor="let user of users; let i = index">
+      <app-user-card [user]="user"/>
+    </div>
   </div>
 </main>

@@ -5,17 +5,21 @@
     </div>
     <div class="block__content">
       <div class="card__content">
-        <p class="ft24">{{ test_user.name }}</p>
-        <p>EMAIL: {{ test_user.email }}</p>
-        <p>PHONE: {{ test_user.phone }}</p>
-        <p>CITY: {{ test_user.address.city }}</p>
+        <p class="ft24">{{ user.name }}</p>
+        <p>EMAIL: {{ user.email }}</p>
+        <p>PHONE: {{ user.phone }}</p>
+        <p>CITY: {{ user.address.city }}</p>
       </div>
     </div>
-    <p class="card__username">&commat;{{ test_user.username }}</p>
-    <button
-      class="more__button"
-      [routerLink]="'/'">
-      ПОДРОБНЕЕ
-    </button>
+    <div class="block__under__user">
+      <p class="card__username">&commat;{{ user.username }}</p>
+      <div class="button__block">
+        <button
+          class="more__button"
+          [routerLink]="['/users', user.id]">
+          ПОДРОБНЕЕ
+        </button>
+      </div>
+    </div>
   </nz-card>
 </div>
