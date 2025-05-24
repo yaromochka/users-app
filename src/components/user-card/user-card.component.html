@@ -1,0 +1,21 @@
+<div class="card__container">
+  <nz-card class="card">
+    <div class="block__avatar">
+      <nz-avatar nzSrc="user/user.svg" class="avatar"></nz-avatar>
+    </div>
+    <div class="block__content">
+      <div class="card__content">
+        <p class="ft24">{{ test_user.name }}</p>
+        <p>EMAIL: {{ test_user.email }}</p>
+        <p>PHONE: {{ test_user.phone }}</p>
+        <p>CITY: {{ test_user.address.city }}</p>
+      </div>
+    </div>
+    <p class="card__username">&commat;{{ test_user.username }}</p>
+    <button
+      class="more__button"
+      [routerLink]="'/'">
+      ПОДРОБНЕЕ
+    </button>
+  </nz-card>
+</div>
