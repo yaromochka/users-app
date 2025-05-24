@@ -11,7 +11,6 @@ declare const ymaps: any;
   selector: 'app-profile-page',
   templateUrl: './profile-page.component.html',
   imports: [
-    NgIf,
     NgOptimizedImage
   ],
   styleUrls: ['./profile-page.component.scss']

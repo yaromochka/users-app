@@ -1,7 +1,16 @@
 <main class="card__page">
-  <div class="cards__container">
-    <div *ngFor="let user of users; let i = index">
-      <app-user-card [user]="user"/>
+  <div class="card__filter">
+    <div class="filter">
+      <label for="sortSelect">Сортировать по:</label>
+      <select id="sortSelect" [(ngModel)]="sortField" (change)="sortUsers()">
+        <option value="name">Имя</option>
+        <option value="email">Email</option>
+      </select>
+    </div>
+    <div class="cards__container">
+      <div *ngFor="let user of users; let i = index">
+        <app-user-card [user]="user"/>
+      </div>
     </div>
   </div>
 </main>
