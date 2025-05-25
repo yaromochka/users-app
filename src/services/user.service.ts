@@ -12,8 +12,13 @@ export class UserService {
   constructor(private http: HttpClient) {
   }
 
-  getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${environment.apiUrl}/users`);
+  getUsers(page: number = 1, limit: number = 10): Observable<User[]> {
+    return this.http.get<User[]>(`${environment.apiUrl}/users`, {
+      params: {
+        _page: page.toString(),
+        _limit: limit.toString()
+      }
+    });
   }
 
   getUser(id: string): Observable<User> {

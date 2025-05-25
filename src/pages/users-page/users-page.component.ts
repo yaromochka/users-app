@@ -18,12 +18,18 @@ import {FormsModule} from '@angular/forms';
 export class UsersPageComponent implements OnInit {
   users: User[] = []
   sortField: string = 'name'; // по умолчанию сортировка по имени
+  currentPage: number = 1;
+  limit: number = 6;
 
   constructor(private userService: UserService) {
   }
 
   ngOnInit() {
-    this.userService.getUsers().subscribe(users => {
+    this.loadUsers();
+  }
+
+  loadUsers() {
+    this.userService.getUsers(this.currentPage, this.limit).subscribe(users => {
       this.users = users;
       this.sortUsers();
     });
@@ -35,5 +41,21 @@ export class UsersPageComponent implements OnInit {
       const fieldB = (b as any)[this.sortField]?.toString().toLowerCase() || '';
       return fieldA.localeCompare(fieldB);
     });
+  }
+
+  onSortChange() {
+    this.sortUsers();
+  }
+
+  goToPreviousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.loadUsers();
+    }
+  }
+
+  goToNextPage() {
+    this.currentPage++;
+    this.loadUsers();
   }
 }

@@ -1,16 +1,38 @@
 <main class="card__page">
   <div class="card__filter">
-    <div class="filter">
-      <label for="sortSelect">Сортировать по:</label>
-      <select id="sortSelect" [(ngModel)]="sortField" (change)="sortUsers()">
-        <option value="name">Имя</option>
-        <option value="email">Email</option>
-      </select>
+    <div class="block__upper">
+      <div class="filter">
+        <label for="sortSelect">Сортировать по:</label>
+        <select id="sortSelect" [(ngModel)]="sortField" (change)="sortUsers()">
+          <option value="name">Имя</option>
+          <option value="email">Email</option>
+        </select>
+      </div>
+      <div class="block__add__user">
+        <button class="button__add">
+          ДОБАВИТЬ ПОЛЬЗОВАТЕЛЯ
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg>
+        </button>
+      </div>
     </div>
     <div class="cards__container">
       <div *ngFor="let user of users; let i = index">
         <app-user-card [user]="user"/>
       </div>
     </div>
+  </div>
+
+  <div class="pagination">
+    <button (click)="goToPreviousPage()" [disabled]="currentPage === 1">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
+        <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"/>
+      </svg>
+    </button>
+    <span>{{ currentPage }}</span>
+    <button (click)="goToNextPage()" [disabled]="users.length < limit">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
+        <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/>
+      </svg>
+    </button>
   </div>
 </main>
