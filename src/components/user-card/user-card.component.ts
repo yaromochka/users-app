@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {NzCardComponent, NzCardMetaComponent} from 'ng-zorro-antd/card';
+import {NzCardComponent} from 'ng-zorro-antd/card';
 import {User} from '../../models/user/user';
 import {NzAvatarComponent} from 'ng-zorro-antd/avatar';
 import {RouterLink} from '@angular/router';

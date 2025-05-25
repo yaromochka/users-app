@@ -1,9 +1,8 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import * as L from 'leaflet';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user/user';
-import {NgIf, NgOptimizedImage} from '@angular/common';
+import {NgOptimizedImage} from '@angular/common';
 
 declare const ymaps: any;
 
