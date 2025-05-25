@@ -4,13 +4,15 @@ import {UserService} from '../../services/user.service';
 import {User} from '../../models/user/user';
 import {NgForOf} from '@angular/common';
 import {FormsModule} from '@angular/forms';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-users-page',
   imports: [
     UserCardComponent,
     NgForOf,
-    FormsModule
+    FormsModule,
+    RouterLink
   ],
   templateUrl: './users-page.component.html',
   styleUrl: './users-page.component.scss'
@@ -41,10 +43,6 @@ export class UsersPageComponent implements OnInit {
       const fieldB = (b as any)[this.sortField]?.toString().toLowerCase() || '';
       return fieldA.localeCompare(fieldB);
     });
-  }
-
-  onSortChange() {
-    this.sortUsers();
   }
 
   goToPreviousPage() {

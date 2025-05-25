@@ -24,4 +24,19 @@ export class UserService {
   getUser(id: string): Observable<User> {
     return this.http.get<User>(`${environment.apiUrl}/users/${id}`);
   }
+
+  addUser(user: User): Observable<User> {
+    return this.http.post<User>(`${environment.apiUrl}/users`, {
+      user
+    })
+  }
+
+  deleteUser(id: string): Observable<void> {
+    return this.http.delete<void>(`${environment.apiUrl}/users/${id}`);
+  }
+
+  updateUser(id: string, user: User): Observable<void> {
+    return this.http.put<void>(`${environment.apiUrl}/users/${id}`, user);
+
+  }
 }
