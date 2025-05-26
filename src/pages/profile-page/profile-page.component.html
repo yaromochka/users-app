@@ -6,6 +6,10 @@
       <div>
         <h1 class="profile__name">{{ user.name }}</h1>
         <p class="profile__username">&commat;{{ user.username }}</p>
+        <div class="profile__buttons">
+          <button class="edit">Редактировать</button>
+          <button class="delete" (click)="deleteUser(user.id)">Удалить</button>
+        </div>
       </div>
     </div>
 

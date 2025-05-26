@@ -31,12 +31,12 @@ export class UserService {
     })
   }
 
-  deleteUser(id: string): Observable<void> {
-    return this.http.delete<void>(`${environment.apiUrl}/users/${id}`);
+  deleteUser(id: string): Observable<User> {
+    return this.http.delete<User>(`${environment.apiUrl}/users/${id}`);
   }
 
-  updateUser(id: string, user: User): Observable<void> {
-    return this.http.put<void>(`${environment.apiUrl}/users/${id}`, user);
+  updateUser(id: string, user: User): Observable<User> {
+    return this.http.put<User>(`${environment.apiUrl}/users/${id}`, user);
 
   }
 }

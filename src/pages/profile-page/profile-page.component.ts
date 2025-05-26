@@ -1,7 +1,7 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { UserService } from '../../services/user.service';
-import { User } from '../../models/user/user';
+import {Component, OnInit, AfterViewInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {UserService} from '../../services/user.service';
+import {User} from '../../models/user/user';
 import {NgOptimizedImage} from '@angular/common';
 
 declare const ymaps: any;
@@ -21,8 +21,10 @@ export class ProfilePageComponent implements OnInit, AfterViewInit {
 
   constructor(
     private userService: UserService,
-    private route: ActivatedRoute
-  ) {}
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
+  }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id')
@@ -63,4 +65,18 @@ export class ProfilePageComponent implements OnInit, AfterViewInit {
     });
   }
 
+
+  deleteUser(id: number): void {
+    this.userService.deleteUser(String(id)).subscribe({
+      next: (response) => {
+        console.log('Ответ от сервера:', response);
+        alert('Пользователь успешно удалён!');
+        this.router.navigate(['/users']);
+      },
+      error: (error) => {
+        console.error('Ошибка при удалении пользователя:', error);
+        alert(`Ошибка при удалении пользователя: ${error.message || 'Неизвестная ошибка'}`);
+      }
+    });
+  }
 }
