@@ -3,19 +3,26 @@
   justify-content: center;
   align-items: center;
   padding: 2rem;
-  background-color: #fff;
-  color: #000;
+  background-color: var(--white-color);
+  color: var(--black-color);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .profile__card {
   width: 100%;
   max-width: 600px;
-  background: #f9f9f9;
+  background: var(--light-color);
   border: 1px solid #000;
   border-radius: 16px;
   padding: 2rem;
   box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  position: relative;
+
+  app-back-button {
+    position: absolute;
+    top: .7rem;
+    left: .7rem;
+  }
 
   .profile__title {
     display: flex;
@@ -73,7 +80,7 @@
 
 .profile__username {
   font-size: 1rem;
-  color: #666;
+  color: var(--disabled-gray-color);
   margin-bottom: 1.5rem;
 }
 
@@ -90,7 +97,7 @@
     .map {
       height: 300px;
       width: 100%;
-      border: 1px solid #000;
+      border: 1px solid var(--black-color);
       border-radius: 12px;
     }
   }
@@ -99,7 +106,7 @@
   h2 {
     font-size: 1.2rem;
     margin-bottom: .5rem;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid var(--light-bg-gray-color);
     padding-bottom: .25rem;
   }
 

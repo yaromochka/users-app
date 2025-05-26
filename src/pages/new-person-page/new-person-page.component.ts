@@ -1,27 +1,31 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
 import {NgIf} from '@angular/common';
-import {UserService} from '../../services/user.service';
-import {Router} from '@angular/router';
+import {BackButtonComponent} from '../../components/back-button/back-button.component';
 
 @Component({
   selector: 'app-new-person-page',
+  templateUrl: './new-person-page.component.html',
   imports: [
     ReactiveFormsModule,
-    NgIf
+    NgIf,
+    BackButtonComponent
   ],
-  templateUrl: './new-person-page.component.html',
-  styleUrl: './new-person-page.component.scss'
+  styleUrls: ['./new-person-page.component.scss']
 })
 export class NewPersonPageComponent implements OnInit {
   userForm!: FormGroup;
+  isEditMode = false;
+  userId: string | null = null;
 
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
-    private router: Router
-  ) {
-  }
+    private router: Router,
+    private route: ActivatedRoute,
+  ) {}
 
   ngOnInit(): void {
     this.userForm = this.fb.group({
@@ -46,23 +50,53 @@ export class NewPersonPageComponent implements OnInit {
         bs: ['']
       })
     });
+
+    this.userId = this.route.snapshot.paramMap.get('id');
+    this.isEditMode = !!this.userId;
+
+    if (this.isEditMode) {
+      this.userService.getUser(this.userId!).subscribe(user => {
+        this.userForm.patchValue(user);
+        this.userForm.markAsPristine(); // чтобы кнопка осталась неактивной до изменений
+      });
+    }
   }
 
-  onSubmit() {
-    if (this.userForm.valid) {
-      this.userService.addUser(this.userForm.value).subscribe({
-        next: (response) => {
-          console.log('Ответ от сервера:', response);
-          alert('Пользователь успешно добавлен!');
+  onSubmit(): void {
+    if (this.userForm.invalid) {
+      alert('Форма заполнена некорректно.');
+      return;
+    }
+
+    if (!this.userForm.dirty) {
+      alert('Вы не внесли изменений.');
+      return;
+    }
+
+    const userData = this.userForm.value;
+
+    if (this.isEditMode && this.userId) {
+      this.userService.updateUser(this.userId, userData).subscribe({
+        next: () => {
+          alert('Пользователь обновлён.');
           this.router.navigate(['/users']);
         },
-        error: (error) => {
-          console.error('Ошибка при добавлении пользователя:', error);
-          alert(`Ошибка при добавлении пользователя: ${error.message || 'Неизвестная ошибка'}`);
+        error: (err) => {
+          console.error('Ошибка при обновлении:', err);
+          alert('Ошибка при обновлении пользователя.');
         }
       });
     } else {
-      alert('Пожалуйста, заполните форму корректно.');
+      this.userService.addUser(userData).subscribe({
+        next: () => {
+          alert('Пользователь добавлен.');
+          this.router.navigate(['/users']);
+        },
+        error: (err) => {
+          console.error('Ошибка при добавлении:', err);
+          alert('Ошибка при добавлении пользователя.');
+        }
+      });
     }
   }
 }

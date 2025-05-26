@@ -82,6 +82,12 @@
       background: none;
       border: none;
       cursor: pointer;
+      transition: transform .3s ease;
+
+      &:hover {
+        transform: scale(1.2);
+        transition: transform .3s ease;
+      }
     }
   }
 }

@@ -3,82 +3,96 @@
   justify-content: center;
   align-items: center;
   padding: 2rem;
-  background-color: #fff;
-  color: #000;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+  background-color: var(--white-color);
+  color: var(--black-color);
+  font-family: 'Segoe UI', sans-serif;
 
-.new-user__form {
-  width: 100%;
-  max-width: 600px;
-  background: #f9f9f9;
-  border: 1px solid #000;
-  border-radius: 16px;
-  padding: 2rem;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-
-  h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    text-align: center;
-    border-bottom: 2px solid #000;
-    padding-bottom: 0.5rem;
-  }
-
-  label {
-    display: block;
-    margin-top: 1rem;
-    font-weight: bold;
-  }
-
-  input, button {
+  .new-user__form {
+    position: relative;
     width: 100%;
-    padding: 0.5rem;
-    margin-top: 0.25rem;
-    border-radius: 8px;
-    border: 1px solid #000;
-    font-size: 1rem;
-    background-color: #fff;
-    color: #000;
-  }
+    max-width: 600px;
+    background: var(--light-color);
+    border: 1px solid var(--black-color);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 
-  input:focus {
-    outline: none;
-    border-color: #333;
-    box-shadow: 0 0 3px rgba(0,0,0,0.3);
-  }
+    app-back-button {
+      position: absolute;
+      top: 2.5rem;
+      left: 1rem;
+    }
 
-  .error {
-    color: red;
-    font-size: 0.85rem;
-  }
+    .button__back {
+      position: absolute;
+      left: 2rem;
+      top: 2rem;
+      border: 1px solid var(--black-color);
+    }
 
-  button {
-    margin-top: 2rem;
-    background-color: #000;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.2s;
-  }
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      border-bottom: 2px solid var(--black-color);;
+      padding-bottom: 0.5rem;
+    }
 
-  button:disabled {
-    background-color: #666;
-    cursor: not-allowed;
-  }
-
-  button:hover:enabled {
-    background-color: #333;
-  }
-
-  fieldset {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 1rem;
-    margin-top: 1rem;
-
-    legend {
+    label {
+      display: block;
+      margin-top: 1rem;
       font-weight: bold;
-      padding: 0 0.5rem;
+    }
+
+    input, button {
+      width: 100%;
+      padding: .5rem;
+      margin-top: .25rem;
+      border-radius: 8px;
+      border: 1px solid var(--black-color);;
+      font-size: 1rem;
+      background-color: var(--white-color);;
+      color: var(--black-color);;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: var(--enabled-gray-color);
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .error {
+      color: red;
+      font-size: 0.85rem;
+    }
+
+    button {
+      margin-top: 2rem;
+      background-color: var(--black-color);;
+      color: var(--white-color);;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    button:disabled {
+      background-color: var(--disabled-gray-color);
+      cursor: not-allowed;
+    }
+
+    button:hover:enabled {
+      background-color: var(--enabled-gray-color);
+    }
+
+    fieldset {
+      border: 1px solid var(--light-bg-gray-color);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-top: 1rem;
+
+      legend {
+        font-weight: bold;
+        padding: 0 0.5rem;
+      }
     }
   }
 }

@@ -1,10 +1,16 @@
 :root {
   // for basic variables styles
   --black-color: #000;
-  --white-color: #fff;
+  --white-color: #FFF;
+  --light-color: #f9f9f9;
+
+  // gray
   --gray-color: #888;
   --light-gray-color: #AAA;
   --dark-gray-color: #777;
+  --disabled-gray-color: #666;
+  --enabled-gray-color: #333;
+  --light-bg-gray-color: #CCC;
 }
 
 body, html {
@@ -22,4 +28,8 @@ body, html {
 
 .ft24 {
   font-size: 1.8rem;
+}
+
+button {
+  user-select: none;
 }

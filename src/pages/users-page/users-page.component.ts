@@ -5,6 +5,7 @@ import {User} from '../../models/user/user';
 import {NgForOf} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {RouterLink} from '@angular/router';
+import {BackButtonComponent} from '../../components/back-button/back-button.component';
 
 @Component({
   selector: 'app-users-page',
@@ -12,7 +13,8 @@ import {RouterLink} from '@angular/router';
     UserCardComponent,
     NgForOf,
     FormsModule,
-    RouterLink
+    RouterLink,
+    BackButtonComponent
   ],
   templateUrl: './users-page.component.html',
   styleUrl: './users-page.component.scss'

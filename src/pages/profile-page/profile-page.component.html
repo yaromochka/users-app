@@ -1,5 +1,6 @@
 <div class="profile__container">
   <div class="profile__card">
+    <app-back-button />
 
     <div class="profile__title">
       <img ngSrc="/user/user.svg" height="100" width="100" id="avatar" alt="avatar"/>
@@ -7,7 +8,7 @@
         <h1 class="profile__name">{{ user.name }}</h1>
         <p class="profile__username">&commat;{{ user.username }}</p>
         <div class="profile__buttons">
-          <button class="edit">Редактировать</button>
+          <button class="edit" [routerLink]="'edit'">Редактировать</button>
           <button class="delete" (click)="deleteUser(user.id)">Удалить</button>
         </div>
       </div>

@@ -2,6 +2,7 @@
   <div class="card__filter">
     <div class="block__upper">
       <div class="filter">
+        <app-back-button />
         <label for="sortSelect">Сортировать по:</label>
         <select id="sortSelect" [(ngModel)]="sortField" (change)="sortUsers()">
           <option value="name">Имя</option>
