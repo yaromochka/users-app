@@ -2,7 +2,6 @@ import {Component, OnInit, AfterViewInit} from '@angular/core';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {UserService} from '../../services/user.service';
 import {User} from '../../models/user/user';
-import {NgOptimizedImage} from '@angular/common';
 import {BackButtonComponent} from '../../components/back-button/back-button.component';
 
 declare const ymaps: any;
@@ -11,7 +10,6 @@ declare const ymaps: any;
   selector: 'app-profile-page',
   templateUrl: './profile-page.component.html',
   imports: [
-    NgOptimizedImage,
     RouterLink,
     BackButtonComponent
   ],
