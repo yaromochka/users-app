@@ -1,4 +1,5 @@
-@import '../../variables';
+@use '../../variables' as *;
+
 
 .profile__container {
   display: flex;
