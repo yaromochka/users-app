@@ -1,22 +1,32 @@
+@import '../../variables';
+
 .profile__container {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
   background-color: var(--white-color);
   color: var(--black-color);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  @media (max-width: $mobile) {
+    font-size: .8rem;
+  }
 }
 
 .profile__card {
-  width: 100%;
-  max-width: 600px;
+  width: 40%;
   background: var(--light-color);
-  border: 1px solid #000;
+  border: 1px solid var(--black-color);
   border-radius: 16px;
   padding: 2rem;
   box-shadow: 0 8px 16px rgba(0,0,0,0.1);
   position: relative;
+
+  @media (max-width: $tablet) {
+    width: 90%;
+  }
 
   app-back-button {
     position: absolute;
@@ -28,6 +38,7 @@
     display: flex;
     align-items: center;
     gap: 2rem;
+    flex-wrap: wrap;
 
     #avatar {
       border: 2px solid var(--black-color);
@@ -45,6 +56,11 @@
         border-radius: .7rem;
         cursor: pointer;
         transition: 0.3s;
+
+        @media (max-width: $mobile) {
+          width: 8.5rem;
+          font-size: 1rem;
+        }
       }
 
       .edit {
@@ -116,7 +132,7 @@
   }
 
   a {
-    color: #000;
+    color: var(--black-color);
     text-decoration: underline;
 
     &:hover {
